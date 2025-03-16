@@ -1,0 +1,50 @@
+name: Clay for Ubuntu
+
+on:
+  push:
+    branches: [ '**' ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: contains(github.event.head_commit.message, ':construction:') || contains(github.event.head_commit.message, ':ubuntu:')
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Prepare
+      run: |
+        sudo apt-get install
+        sudo apt-get -qq update
+        sudo apt-get -y install gcc clang
+        sudo apt-get -y install xz-utils python3 libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev libxext-dev libunwind-dev glibc-source
+      
+    - name: Make
+      run: |
+        sh init-repo.sh
+        wget -c https://sdk.lunarg.com/sdk/download/1.3.275.0/linux/vulkansdk-linux-x86_64-1.3.275.0.tar.xz -O - | tar -xJf -
+        export VULKAN_SDK="$(pwd)/1.3.275.0/x86_64"
+        export VK_SDK_PATH="$(pwd)/1.3.275.0/x86_64"
+
+        git config --global url."https://github.com/".insteadOf git@github.com:
+        git config --global url."https://".insteadOf git://
+
+        git submodule update --init --recursive -f submodules/SPIRV-Reflect
+        git submodule update --init --recursive -f submodules/SDL
+        git submodule update --init --recursive -f submodules/gli
+        git submodule update --init --recursive -f submodules/imgui
+
+        git submodule update --init --recursive submodules/CoquelicotFormat
+        conan editable add submodules/CoquelicotFormat
+
+        git lfs install
+        git lfs pull
+
+        mkdir -p build_linux_x86_64
+        cd build_linux_x86_64
+        
+        conan install .. --build=missing --profile:host=../profiles/linux_x86_64 --profile:build=../profiles/linux_x86_64 -s build_type=Release
+        cmake .. -DCQ_BUILD_WITH_VCPKG:BOOL=OFF -DCQ_BUILD_WITHOUT_DEMO:BOOL=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE="conan_toolchain.cmake"
+        make
+
+        cd -

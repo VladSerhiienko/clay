@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.27)
 project(clay)
 
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 option(CLAY_INCLUDE_ALL_EXAMPLES "Build all examples" ON)
 option(CLAY_INCLUDE_DEMOS "Build video demo and website" OFF)
