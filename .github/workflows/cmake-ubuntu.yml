@@ -14,10 +14,9 @@ jobs:
 
     - name: Prepare
       run: |
-        sudo apt-get install
-        sudo apt-get -qq update
-        sudo apt-get -y install gcc clang
-        sudo apt-get -y install xz-utils python3 libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev libxext-dev libunwind-dev glibc-source
+        sudo apt-get update -y
+        sudo apt-get -y install gcc clang pkg-config python3
+        sudo apt-get -y install xz-utils libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev libxext-dev libunwind-dev glibc-source
       
     - name: Make
       run: |

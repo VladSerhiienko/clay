@@ -1,46 +1,18 @@
-
 import os
 from conan import ConanFile
-from conan.tools.cmake import CMakeToolchain, CMake, cmake_layout
+from conan.tools.files import copy
 
 class Clay(ConanFile):
     name = "clay"
-    settings = "os", "compiler", "build_type", "arch"
-    generators = "CMakeDeps", "CMakeToolchain"
+    version = "1.0"
+    exports_sources = "*.h", "profiles*"
+    no_copy_source = True
 
-    options = {
-        "with_raylib_examples": [True, False],
-        "with_sdl2_examples": [True, False],
-        "with_cpp_example": [True, False],
-        "with_demos": [True, False],
-    }
+    def package(self):
+        copy(self, "LICENSE.md", src=self.source_folder, dst=os.path.join(self.package_folder, "licenses"))
+        copy(self, pattern="clay.h", src=self.source_folder, dst=os.path.join(self.package_folder, "include"), keep_path=False)
 
-    default_options = {
-        "with_raylib_examples": False,
-        "with_sdl2_examples": False,
-        "with_cpp_example": False,
-        "with_demos": False,
-    }
-
-    def requirements(self):
-        self.requires("raylib/5.5")
-        self.requires("sdl/2.28.3")
-        self.requires("sdl_ttf/2.24.0")
-        self.requires("sdl_image/2.8.2")
-        # self.requires("freetype/2.13.3", override=True)
-        # self.requires("sdl/3.2.6")
-
-    def build(self):
-        cmake = CMake(self)
-        cmake.configure(variables={
-            # Disable all examples by default
-            "CLAY_INCLUDE_ALL_EXAMPLES": False,
-            # Temporary not supported due to missing packages
-            "CLAY_INCLUDE_SDL3_EXAMPLES": False,
-            # Enable supported examples based on options
-            "CLAY_INCLUDE_RAYLIB_EXAMPLES": self.options.with_raylib_examples,
-            "CLAY_INCLUDE_SDL2_EXAMPLES": self.options.with_sdl2_examples,
-            "CLAY_INCLUDE_CPP_EXAMPLE": self.options.with_cpp_example,
-            "CLAY_INCLUDE_DEMOS": self.options.with_demos,
-        })
-        cmake.build()
+    def package_info(self):
+        self.cpp_info.includedirs = ["include"]
+        self.cpp_info.bindirs = []
+        self.cpp_info.libdirs = []
