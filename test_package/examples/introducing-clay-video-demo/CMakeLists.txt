@@ -7,7 +7,7 @@ find_package(raylib)
 add_executable(clay_examples_introducing_clay_video_demo main.c)
 target_compile_options(clay_examples_introducing_clay_video_demo PUBLIC)
 target_include_directories(clay_examples_introducing_clay_video_demo PUBLIC .)
-target_link_libraries(clay_examples_introducing_clay_video_demo PUBLIC raylib)
+target_link_libraries(clay_examples_introducing_clay_video_demo PUBLIC raylib clay::clay)
 
 add_custom_command(
         TARGET clay_examples_introducing_clay_video_demo POST_BUILD

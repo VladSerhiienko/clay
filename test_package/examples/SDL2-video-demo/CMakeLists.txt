@@ -12,6 +12,7 @@ target_compile_options(SDL2_video_demo PUBLIC)
 target_include_directories(SDL2_video_demo PUBLIC .)
 
 target_link_libraries(SDL2_video_demo PUBLIC
+    clay::clay
     SDL2::SDL2main
     SDL2::SDL2-static
     SDL2_ttf::SDL2_ttf-static

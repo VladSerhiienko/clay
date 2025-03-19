@@ -7,3 +7,4 @@ add_executable(clay_official_website main.c)
 
 target_compile_options(clay_official_website PUBLIC)
 target_include_directories(clay_official_website PUBLIC .)
+target_link_libraries(clay_official_website clay::clay)

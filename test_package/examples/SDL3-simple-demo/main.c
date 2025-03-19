@@ -4,7 +4,7 @@
 #include <SDL3_ttf/SDL_ttf.h>
 
 #define CLAY_IMPLEMENTATION
-#include "../../clay.h"
+#include "clay.h"
 
 #include <stdio.h>
 

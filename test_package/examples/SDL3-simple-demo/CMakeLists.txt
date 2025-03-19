@@ -49,6 +49,7 @@ set_property(DIRECTORY "${SDL_image_SOURCE_DIR}" PROPERTY EXCLUDE_FROM_ALL TRUE)
 # Example executable
 add_executable(${PROJECT_NAME} main.c)
 target_link_libraries(${PROJECT_NAME} PRIVATE
+    clay::clay
 	SDL3::SDL3
 	SDL3_ttf::SDL3_ttf
 	SDL3_image::SDL3_image

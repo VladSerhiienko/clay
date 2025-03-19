@@ -8,3 +8,4 @@ node_modules/
 
 conan_build/
 venv/
+test_package/build/

@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.27)
 project(clay)
 
+find_package(clay REQUIRED CONFIG)
 
 option(CLAY_INCLUDE_ALL_EXAMPLES "Build all examples" ON)
 option(CLAY_INCLUDE_DEMOS "Build video demo and website" OFF)

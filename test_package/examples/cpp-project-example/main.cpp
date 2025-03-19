@@ -1,6 +1,7 @@
 #include <iostream>
+
 #define CLAY_IMPLEMENTATION
-#include "../../clay.h"
+#include "clay.h"
 
 Clay_LayoutConfig layoutElement = Clay_LayoutConfig { .padding = {5} };
 

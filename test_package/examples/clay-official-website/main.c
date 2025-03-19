@@ -1,5 +1,5 @@
 #define CLAY_IMPLEMENTATION
-#include "../../clay.h"
+#include "clay.h"
 
 double windowWidth = 1024, windowHeight = 768;
 float modelPageOneZRotation = 0;

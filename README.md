@@ -25,7 +25,7 @@ Download or clone clay.h and include it after defining `CLAY_IMPLEMENTATION` in 
 ```C
 // Must be defined in one file, _before_ #include "clay.h"
 #define CLAY_IMPLEMENTATION
-#include "../../clay.h"
+#include "clay.h"
 
 const Clay_Color COLOR_LIGHT = (Clay_Color) {224, 215, 210, 255};
 const Clay_Color COLOR_RED = (Clay_Color) {168, 66, 28, 255};

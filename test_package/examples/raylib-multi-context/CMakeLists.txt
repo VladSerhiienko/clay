@@ -7,7 +7,7 @@ find_package(raylib)
 add_executable(clay_examples_raylib_multi_context main.c)
 target_compile_options(clay_examples_raylib_multi_context PUBLIC)
 target_include_directories(clay_examples_raylib_multi_context PUBLIC .)
-target_link_libraries(clay_examples_raylib_multi_context PUBLIC raylib)
+target_link_libraries(clay_examples_raylib_multi_context PUBLIC raylib clay::clay)
 
 add_custom_command(
         TARGET clay_examples_raylib_multi_context POST_BUILD

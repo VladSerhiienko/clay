@@ -1,5 +1,5 @@
 #include <Windows.h>
-#include "../../clay.h"
+#include "clay.h"
 
 HDC renderer_hdcMem = {0};
 HBITMAP renderer_hbmMem = {0};

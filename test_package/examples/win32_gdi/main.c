@@ -11,7 +11,7 @@
 #include "../../renderers/win32_gdi/clay_renderer_gdi.c"
 
 #define CLAY_IMPLEMENTATION
-#include "../../clay.h"
+#include "clay.h"
 
 #include "../shared-layouts/clay-video-demo.c"
 

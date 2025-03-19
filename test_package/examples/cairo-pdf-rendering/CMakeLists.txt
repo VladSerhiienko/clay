@@ -11,7 +11,7 @@ find_package(Cairo REQUIRED)
 target_compile_options(clay_examples_cairo_pdf_rendering PUBLIC)
 target_include_directories(clay_examples_cairo_pdf_rendering PUBLIC . ${CAIRO_INCLUDE_DIRS})
 
-target_link_libraries(clay_examples_cairo_pdf_rendering PUBLIC Cairo::Cairo)
+target_link_libraries(clay_examples_cairo_pdf_rendering PUBLIC Cairo::Cairo clay::clay)
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG}")
 set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE}")
 

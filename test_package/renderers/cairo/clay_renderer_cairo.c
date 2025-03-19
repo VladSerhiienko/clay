@@ -27,7 +27,7 @@
 #include <math.h>
 
 #define CLAY_IMPLEMENTATION
-#include "../../clay.h"
+#include "clay.h"
 
 #include <cairo/cairo.h>
 

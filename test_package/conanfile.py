@@ -33,7 +33,10 @@ class ClayTest(ConanFile):
         # self.requires("freetype/2.13.3", override=True)
         # self.requires("sdl/3.2.6")
 
-    def test(self):
+    def layout(self):
+        cmake_layout(self)
+
+    def build(self):
         cmake = CMake(self)
         cmake.configure(variables={
             # Disable all examples by default
@@ -47,3 +50,6 @@ class ClayTest(ConanFile):
             "CLAY_INCLUDE_DEMOS": self.options.with_demos,
         })
         cmake.build()
+
+    def test(self):
+        pass

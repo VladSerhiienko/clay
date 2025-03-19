@@ -1,5 +1,5 @@
 #define CLAY_IMPLEMENTATION
-#include "../../clay.h"
+#include "clay.h"
 #include "../../renderers/SDL2/clay_renderer_SDL2.c"
 
 #include <SDL.h>
