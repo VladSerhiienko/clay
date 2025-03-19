@@ -6,6 +6,7 @@ node_modules/
 *.dSYM
 .vs/
 
+build/
 conan_build/
 venv/
 test_package/build/
