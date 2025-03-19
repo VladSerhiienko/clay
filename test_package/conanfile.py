@@ -2,7 +2,7 @@
 import os
 from conan import ConanFile
 from conan.tools.cmake import CMakeToolchain, CMake, cmake_layout
-from conan.tools.files import copy
+from conan.tools.build import can_run
 
 class ClayTest(ConanFile):
     name = "clay_test"
@@ -52,4 +52,6 @@ class ClayTest(ConanFile):
         cmake.build()
 
     def test(self):
-        pass
+        if can_run(self):
+            self.output.warning("[clay_test]: nothing to test")
+            pass

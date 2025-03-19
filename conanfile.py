@@ -9,9 +9,8 @@ class Clay(ConanFile):
     no_copy_source = True
 
     def package(self):
-        copy(self, "*.h", src="include", dst=os.path.join(self.package_folder, "include"))
+        copy(self, "*.h", self.source_folder, self.package_folder)
 
     def package_info(self):
-        self.cpp_info.includedirs = ["include"]
         self.cpp_info.bindirs = []
         self.cpp_info.libdirs = []
