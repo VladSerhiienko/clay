@@ -4,8 +4,9 @@ python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 
-conan export-pkg . \
+conan create . \
     --test-folder=test_package \
+    -b missing \
     -pr:b=profiles/linux_x86_64 \
     -pr:h=profiles/linux_x86_64 \
     -o clay_test/*:with_raylib_examples=True \
